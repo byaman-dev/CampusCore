@@ -1,0 +1,191 @@
+@import "tailwindcss" source(none);
+@source "../src";
+@import "tw-animate-css";
+
+/*
+ * Mangalam Vidya Vihar — "Bound Almanac" design system.
+ * Paper-and-ink institutional palette, Fraunces display + Inter body +
+ * JetBrains Mono for labels. All colors are oklch semantic tokens.
+ */
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
+  --radius-2xl: calc(var(--radius) + 10px);
+
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+  --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --font-sans: var(--font-body);
+
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-paper: var(--background);
+  --color-surface: var(--surface);
+  --color-ink: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-rule: var(--rule);
+  --color-stamp: var(--stamp);
+  --color-stamp-foreground: var(--stamp-foreground);
+  --color-seal: var(--seal);
+  --color-seal-foreground: var(--seal-foreground);
+  --color-pine: var(--pine);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-border: var(--rule);
+  --color-input: var(--rule);
+  --color-ring: var(--ring);
+  --color-ring-offset-background: var(--background);
+  --color-sidebar: var(--surface);
+  --color-sidebar-foreground: var(--foreground);
+  --color-sidebar-primary: var(--stamp);
+  --color-sidebar-primary-foreground: var(--stamp-foreground);
+  --color-sidebar-accent: var(--surface);
+  --color-sidebar-accent-foreground: var(--foreground);
+  --color-sidebar-border: var(--rule);
+  --color-sidebar-ring: var(--ring);
+  --color-chart-1: var(--stamp);
+  --color-chart-2: var(--pine);
+  --color-chart-3: var(--seal);
+  --color-chart-4: var(--muted-foreground);
+  --color-chart-5: var(--rule);
+
+  --ease-almanac: cubic-bezier(0.32, 0.72, 0, 1);
+  --animate-rise: rise 0.55s cubic-bezier(0.32, 0.72, 0, 1) both;
+  --animate-stamp: stamp 0.8s cubic-bezier(0.32, 0.72, 0, 1) 0.15s both;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(14px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes stamp {
+    from {
+      opacity: 0;
+      transform: scale(1.18) rotate(-4deg);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+}
+
+:root {
+  --radius: 0.25rem;
+  /* #f4efe4 */
+  --background: oklch(0.951 0.017 84.2);
+  /* #fbf7ed */
+  --surface: oklch(0.975 0.012 88);
+  /* #211d18 */
+  --foreground: oklch(0.229 0.008 63.9);
+  /* #6f675a */
+  --muted-foreground: oklch(0.492 0.014 79.6);
+  --muted: oklch(0.975 0.012 88);
+  /* #d8cebc */
+  --rule: oklch(0.862 0.021 82.9);
+  /* #2e4a68 */
+  --stamp: oklch(0.386 0.055 249.9);
+  --stamp-foreground: oklch(0.951 0.017 84.2);
+  /* #a04a22 */
+  --seal: oklch(0.478 0.135 40.9);
+  --seal-foreground: oklch(0.975 0.012 88);
+  /* #2f4a3d */
+  --pine: oklch(0.372 0.041 158.9);
+
+  --card: oklch(0.975 0.012 88);
+  --card-foreground: var(--foreground);
+  --popover: oklch(0.975 0.012 88);
+  --popover-foreground: var(--foreground);
+  --primary: var(--foreground);
+  --primary-foreground: var(--background);
+  --secondary: oklch(0.975 0.012 88);
+  --secondary-foreground: var(--foreground);
+  --accent: oklch(0.93 0.02 84);
+  --accent-foreground: var(--foreground);
+  --destructive: oklch(0.512 0.166 27.5);
+  --destructive-foreground: oklch(0.975 0.012 88);
+  --success: oklch(0.45 0.09 155);
+  --ring: oklch(0.478 0.135 40.9);
+}
+
+@layer base {
+  * {
+    border-color: var(--rule);
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--background);
+    color: var(--foreground);
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background-color: color-mix(in oklab, var(--seal) 22%, transparent);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--seal);
+    outline-offset: 2px;
+  }
+}
+
+/* Small-caps mono label used across the almanac layout */
+@utility label {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  line-height: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--muted-foreground);
+}
+
+@utility rule-heading {
+  border-bottom-width: 2px;
+  border-color: var(--foreground);
+  padding-bottom: 0.5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+}
